@@ -9,16 +9,16 @@ typedef struct block {
   struct block *next;
   b8 in_use;
   u32 length;
-} block;
+} BlockHeader;
 
 typedef struct {
-  b8 lock;
+  b8 lock; // simple lock for multi-threading support
   u16 amount_of_pages;
   u32 amount_of_blocks;
-} header;
+} Header;
 
 void *my_malloc(u64 size_in_bytes);
 
-void free_mem(void *);
+void free_mem(void *ptr);
 
 #endif
